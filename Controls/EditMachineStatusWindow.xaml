@@ -1,0 +1,57 @@
+﻿<Window x:Class="MachineStatusTracker.Controls.EditMachineStatusWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MachineStatusTracker.Controls"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation ="CenterScreen"
+        Title="EditMachineStatusWindow" Height="450" Width="300">
+    <Border BorderBrush="Black" CornerRadius="5" BorderThickness="2" Width="300">
+        <Grid Background="White" >
+            <Grid.RowDefinitions>
+                <!--Name-->
+                <RowDefinition Height="30"/>
+                <!--Status-->
+                <RowDefinition Height="30"/>
+                <!--Description Lable-->
+                <RowDefinition Height="30"/>
+                <!--Description-->
+                <RowDefinition Height="80"/>
+                <!--Notes Lable-->
+                <RowDefinition Height="30"/>
+                <!--Notes-->
+                <RowDefinition Height="*"/>
+                <!--Buttons-->
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Height="30" Grid.Row="0">
+                <Label Content="Name:" Margin="10,0" Width="50"/>
+                <TextBox Text="{Binding NewName}" Width="150" Height="30" Margin="10,2"/>
+               
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" Grid.Row="1">
+                <Label Content="Status:" Margin="10,0" Width="50"/>
+                <ComboBox Name="MachinesStatusComboBox" Height="30" Margin="10,2" VerticalContentAlignment="Center" Width="150" ItemsSource="{Binding StatusList}"  SelectionChanged="MachinesStatus_SelectionChanged"></ComboBox>
+               
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" Grid.Row="2">
+                <Label Content="Description:" Margin="10,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  Grid.Row="3">
+                <TextBox Text="{Binding NewDescription, Mode=TwoWay}" Margin="10,0" Width="240"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" Grid.Row="4">
+                <Label Content="Notes:" Margin="10,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  Grid.Row="5" VerticalAlignment="Stretch">
+                <TextBox Text="{Binding NewNotes, Mode=TwoWay}"  Margin="10,0"  VerticalAlignment="Stretch" Width="240"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="40" Grid.Row="6"  HorizontalAlignment="Right">
+                <Button x:Name="SaveStatusButton" Content="Save" Click="SaveStatusButton_Click"  Margin="10,0" Height="30" Width="80" Style="{StaticResource BaseButton}" BorderThickness="1" BorderBrush="Black" />
+                <Button x:Name="CancelStatusButton" Content="Cancel" Click="CancelStatusButton_Click"  Width="80" Height="30" Margin="10,0" Style="{StaticResource BaseButton}" BorderThickness="1" BorderBrush="Black"  />
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

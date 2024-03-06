@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Brush x:Key="PrimaryColorBrush">Black</Brush>
+    <Brush x:Key="PrimaryTextColorBrush">#4A4A4A</Brush>
+    <Brush x:Key="SecondaryTextColorBrush">Transparent</Brush>
+    <Brush x:Key="TextColorBrush">#3f4045</Brush>
+    <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="#eceff1"/>
+    <SolidColorBrush x:Key="ButtonForegroundDisabled" Color="#b0bec5"/>
+    <Style x:Key="BaseButton" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource SecondaryTextColorBrush}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource AppFont}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <!--<Setter Property="Foreground" Value="{DynamicResource PrimaryColorBrush}"/>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundColorBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" >
+                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryColorBrush}"/>
+                            <Setter Property="Background" Value="{DynamicResource SecondaryTextColorBrush}"/>
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                            <Setter Property="BorderThickness" Value="2"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="FontSize" Value="20"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource ButtonBackgroundDisabled}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundDisabled}"/>
+                <Setter Property="Foreground" Value="{StaticResource ButtonForegroundDisabled}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

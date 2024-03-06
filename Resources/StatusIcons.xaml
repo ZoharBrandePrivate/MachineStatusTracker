@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="ReZoneManagementConsole.Resources">
+    <BitmapImage x:Key="StatusImageRunning" UriSource="..\Resources\Status_runing.png"/>
+    <BitmapImage x:Key="StatusImageIdle" UriSource="..\Resources\Status_idle.png"/>
+    <BitmapImage x:Key="StatusImageOffline" UriSource="..\Resources\Status_offline.png"/>
+    <BitmapImage x:Key="StatusImageUnavailable" UriSource="..\Resources\Status_unavailable.png"/>
+</ResourceDictionary>

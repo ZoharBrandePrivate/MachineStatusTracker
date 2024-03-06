@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="MachineStatusTracker.Controls.MainControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:MachineStatusTracker.Controls"             
+             mc:Ignorable="d" 
+             Height="Auto"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid >
+        <Grid.RowDefinitions>
+            <!-- Header Row-->
+            <RowDefinition Height="60"/>
+            <!-- Main Panel -->
+            <RowDefinition Height="800"/>
+            <!-- Error Panel -->
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions> 
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Machines Staus" FontSize="24"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" />
+        </StackPanel>
+        <!-- Main Panel -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+                <Label Content="Filter Machines" VerticalAlignment="Center" Height="30"/>
+                <ComboBox Name="FilterMachinesStatus" Height="30" VerticalContentAlignment="Center" Width="150" SelectedIndex="0" SelectionChanged="FilterMachinesStatus_SelectionChanged" ItemsSource="{Binding Path=OperationalStatusFilter}"></ComboBox>
+                <Button x:Name="AddNewStatusButton" Click="AddNewStatusButton_Click"  Width="40" Height="40" Margin="30,0,0,0" Style="{StaticResource BaseButton}">
+                    <Image Source="..\Resources\add_48.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <Label Content="Add new machine status" />
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button  Name="RefreshButton" Click="RefreshButton_Click" Height="40" Width="40" Margin="10,0" Style="{StaticResource BaseButton}">
+                    <Image Source="..\Resources\refresh_48.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <Label Content="Refresh Data" />
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
+            <Grid Grid.Row="1" Height="450" VerticalAlignment="Top">
+                <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled"  ScrollViewer.HorizontalScrollBarVisibility="Auto" BorderThickness="0" 
+                ItemsSource="{Binding MainControlVM.MachineStatuses}" 
+                VerticalAlignment="Center" HorizontalContentAlignment="Center"  HorizontalAlignment="Stretch">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Background="Transparent" Orientation="Horizontal" HorizontalAlignment="Center" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <UserControl Name="Ststus" Height="Auto">
+                                <controls:MachineStatusControl DataContext="{Binding}"/>
+                            </UserControl>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
