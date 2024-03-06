@@ -11,3 +11,9 @@ Not implemanted:
 
 1. Ensure that the application provides feedback to the user for successful operations (e.g., machine status added successfully, status updated).
 2. Provide basic error handling to inform users of any issues encountered during machine status management operations.
+
+Running the app:
+1. Clone the repository
+2. build the project
+3. run
+   
